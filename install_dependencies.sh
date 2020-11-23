@@ -77,6 +77,13 @@ if [ ! -d PEGTL ] ; then
   rm pegtl.tar.gz
   mv PEGTL-$PEGTL_VERSION PEGTL
 fi
+cd PEGTL
+mkdir -p build
+cd build
+echo "Building PEGTL..."
+cmake ..
+make $PARALLEL
+cd ../..
 
 if [ "$ENABLE_TESTS" = "1" ]; then
 echo "Getting GoogleTest..."
